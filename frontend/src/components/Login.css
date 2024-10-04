@@ -1,0 +1,113 @@
+/* Wrapper for the entire login page */
+.login-page {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(to left, rgba(255, 257, 51, 0.8), rgba(255, 255, 255, 0.9));
+    overflow: hidden; /* Prevent overflow from the left section */
+}
+
+/* Left side with curved shape and image */
+.left-side {
+    flex: 2; /* Give the left side more space */
+    position: relative; /* Position relative for absolute child positioning */
+    overflow: hidden; /* Hide overflow to prevent white spaces */
+    clip-path: ellipse(75% 100% at 25% 50%); /* Apply clip-path directly to the left-side */
+}
+
+/* The background image with left-aligned curve */
+.left-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/image1.jpg') no-repeat center center;
+    background-size: cover; /* Cover the entire area */
+}
+
+/* Content within the left-side */
+.left-content {
+    position: relative; /* Ensure content is above the image */
+    text-align: center;
+    color: #fff;
+    padding: 20px; /* Add padding for spacing */
+    z-index: 1; /* Ensure the content is above the image */
+    display: flex; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100%; /* Full height for vertical centering */
+}
+
+/* Text styling */
+.quote-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Right side for the login form */
+.right-side {
+    flex: 1; /* Adjust the flex ratio */
+    position: relative; /* Position relative for background styling */
+    display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 40px; /* Adjust padding for better layout */
+    background: transparent; /* Make background transparent to see the pseudo-element */
+}
+
+/* Add a pseudo-element for the right-side gradient */
+.right-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 207, 51, 0.8), rgba(255, 255, 255, 0.9)); /* Gradient background */
+    clip-path: ellipse(75% 100% at 25% 50%); /* Fill the remaining shape */
+    z-index: 0; /* Ensure it's behind the content */
+    transform: translateX(100%); /* Move the pseudo-element to the right */
+}
+
+/* The login container */
+.login-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Ensure the form takes the full width in small viewports */
+}
+
+/* Input fields and button styles */
+.login-input {
+    margin-bottom: 20px;
+}
+
+.login-button {
+    background-color: #000;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+
+
+/* Error alert styling */
+.error-alert {
+    margin-bottom: 20px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .left-side {
+        clip-path: none; /* Remove the curve on smaller screens for better layout */
+        display: none; /* Optionally hide the left section for smaller screens */
+    }
+
+    .right-side {
+        flex: 1;
+        padding: 20px;
+        background: #f5f5f5; /* Solid color for smaller screens */
+    }
+}
